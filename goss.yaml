@@ -1,3 +1,4 @@
 service:
   nginx:
+    enabled: true
     running: true
