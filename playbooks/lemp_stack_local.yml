@@ -1,0 +1,7 @@
+---
+- hosts: deploy
+  connection: local
+
+  roles:
+    - nginx
+    #- php

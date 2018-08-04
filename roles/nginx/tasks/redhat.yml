@@ -1,0 +1,28 @@
+---
+- name: install nginx last version
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - nginx
+    - php-fpm
+  #ignore_errors: true
+  
+#create directory for website inside
+- name: Create Directory for website
+  file:
+    path: /var/www/html/website
+    owner: "{{ user.user }}"
+    group: "{{ user.group }}"
+    state: directory
+    mode: 0755
+
+- name: startup nginx
+  service:
+    name: "{{ item }}"
+    state: started
+  with_items:
+    - nginx
+    - php7.2-fpm
+
+# tasks file for nginx

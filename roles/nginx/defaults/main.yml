@@ -1,0 +1,7 @@
+---
+#variables to use if user and group are not definied
+user:
+  user: root
+  group: root
+  
+# defaults file for nginx

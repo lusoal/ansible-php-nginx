@@ -1,0 +1,4 @@
+#variable for user
+user:
+  group: root
+  user: root
