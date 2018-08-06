@@ -2,3 +2,6 @@
 user:
   group: root
   user: root
+
+site:
+  domain: meusite.com.br

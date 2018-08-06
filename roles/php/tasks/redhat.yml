@@ -1,0 +1,36 @@
+---
+- name: install php of definied version
+  yum:
+    name: php-fpm
+    state: latest
+
+- name: change php-fpm.ini config
+  template:
+    src: php.ini.j2
+    dest: /etc/php.ini
+    owner: root
+    group: root
+    mode: 0755
+
+- name: change www.conf
+  template:
+    src: www.conf
+    dest: /etc/php-fpm.d/www.conf
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Create info.php inside nginx directory to check
+  template:
+    src: info.php
+    dest: /usr/share/nginx/html/info.php
+    owner: root
+    group: root
+    mode: 0755
+
+- name: Start php-fpm
+  service:
+    name: "{{ item }}"
+    state: started
+  with_items:
+    - php-fpm
